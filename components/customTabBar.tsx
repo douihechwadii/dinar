@@ -49,7 +49,7 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
         onPress={() => router.push('/modals/add')}
         style={styles.addButton}
       >
-        <Octicons name="diff-added" size={24} color="#fff" />
+        <Octicons name="plus-circle" size={24} color="#fff" />
       </TouchableOpacity>
 
       {/* Right side tabs: Expense and Settings */}
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#007aff',
     marginHorizontal: 8,
-    borderRadius: 10,
-    paddingVertical: 8,
+    borderRadius: 30,
+    paddingVertical: 12,
   },
 });
