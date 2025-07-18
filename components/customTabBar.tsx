@@ -92,13 +92,21 @@ function Tab({ route, isFocused, onPress, options }: TabProps) {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    height: 60,
-    backgroundColor: '#fff',
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
+  flexDirection: 'row',
+  height: 60,
+  backgroundColor: '#fff',
+  borderRadius: 30,
+  marginHorizontal: 16, // Adds space on the left and right
+  marginBottom: 16,     // Adds space from bottom
+  paddingHorizontal: 8,
+  borderTopWidth: 0,    // Remove default top border
+  elevation: 5,         // Adds Android shadow
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 4 },
+  shadowOpacity: 0.1,
+  shadowRadius: 10,
+  alignItems: 'center',
+  justifyContent: 'space-evenly',
   },
   tab: {
     flex: 1,
