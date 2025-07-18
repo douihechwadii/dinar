@@ -16,7 +16,7 @@ type TabProps = {
 export default function CustomTabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const router = useRouter();
   const tabRoutes = state.routes.filter(
-    (r) => !r.name.startsWith('_') && !r.name.startsWith('modal/')
+    (r) => !r.name.startsWith('_') && !r.name.startsWith('modals/')
   );
 
   // Define the desired tab order: Home, Income, [Add Button], Expense, Settings

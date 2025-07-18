@@ -1,25 +1,21 @@
-import CustomTabBar from '@/components/customTabBar';
-import { Tabs } from 'expo-router';
-import { View } from 'react-native';
+// app/_layout.tsx
+import { Stack } from 'expo-router';
 
-export default function TabLayout() {
+export default function RootLayout() {
   return (
-    <View style={{ flex: 1, backgroundColor: '#f8f8f8' }}>
-      <Tabs
-        screenOptions={{
+    <Stack>
+      {/* Default stack screen (your Tabs layout is in `(tabs)/_layout.tsx`) */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+      {/* Modal screen customization */}
+      <Stack.Screen
+        name="modals/add"
+        options={{
+          presentation: 'modal', // or 'transparentModal', 'fullScreenModal'
+          animation: 'slide_from_bottom',
           headerShown: false,
         }}
-        tabBar={(props) => (
-          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
-            <CustomTabBar {...props} />
-          </View>
-        )}
-      >
-        <Tabs.Screen name="index" options={{ title: 'Home' }} />
-        <Tabs.Screen name="income" options={{ title: 'Income' }} />
-        <Tabs.Screen name="expense" options={{ title: 'Expense' }} />
-        <Tabs.Screen name="settings" options={{ title: 'Settings' }} />
-      </Tabs>
-    </View>
+      />
+    </Stack>
   );
 }
