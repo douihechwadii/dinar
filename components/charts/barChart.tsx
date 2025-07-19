@@ -1,32 +1,31 @@
 import React from "react";
 import { Dimensions, View } from "react-native";
-import { LineChart } from 'react-native-chart-kit';
+import { BarChart } from "react-native-chart-kit";
 
 const screenWidth = Dimensions.get('window').width;
 
-export default function ChartKit() {
+export default function BarChartKit() {
     return (
         <View>
-            <LineChart
+            <BarChart
                 data={{
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr'],
-                    datasets: [{ data: [20, 45, 28, 80]}],
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                    datasets: [{ data: [12, 19, 14, 20, 25] }],
                 }}
                 width={screenWidth - 20}
                 height={220}
-                
+                yAxisLabel=""
                 chartConfig={{
-                    backgroundColor: '#ffffff',
                     backgroundGradientFrom: '#fff',
                     backgroundGradientTo: '#fff',
-                    decimalPlaces: 0,
-                    color: (opacity = 1) => `rgba(0, 0, 255, ${opacity})`,
-                    labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                 }}
+                verticalLabelRotation={30} yAxisSuffix={""}
                 style={{
                     marginVertical: 8,
                     borderRadius: 8,
                 }}
+            
             />
         </View>
     );
