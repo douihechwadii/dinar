@@ -6,6 +6,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 export default function RootLayout() {
   return (
     <SafeAreaProvider>      
+        
         {/* Change this later to a string that changes based on light or dark mode */}
         <StatusBar barStyle="dark-content"/>
         <Stack screenOptions={{

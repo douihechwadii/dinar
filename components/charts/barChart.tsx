@@ -18,7 +18,8 @@ export default function BarChartKit() {
                 chartConfig={{
                     backgroundGradientFrom: '#fff',
                     backgroundGradientTo: '#fff',
-                    color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                    color: (opacity = 1) => `rgba(0, 0, 255, ${opacity})`,
+                    labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
                 }}
                 verticalLabelRotation={30} yAxisSuffix={""}
                 style={{
