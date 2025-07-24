@@ -7,7 +7,7 @@ export default function ProfileScreen() {
       alignItems: 'center'
     }}
     >
-      <Text>Home Screen</Text>
+      <Text>Profile Screen</Text>
     </View>
   );
 }

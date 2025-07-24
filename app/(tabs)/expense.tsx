@@ -7,7 +7,7 @@ export default function ExpenseScreen() {
       alignItems: 'center'
     }}
     >
-      <Text>Home Screen</Text>
+      <Text>Expense Screen</Text>
     </View>
   );
 }

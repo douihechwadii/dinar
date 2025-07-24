@@ -7,7 +7,7 @@ export default function IncomeScreen() {
       alignItems: 'center'
     }}
     >
-      <Text>Home Screen</Text>
+      <Text>Income Screen</Text>
     </View>
   );
 }

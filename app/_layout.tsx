@@ -6,7 +6,9 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content"/>
-      <Stack.Screen name="(tabs)"/>
+      <Stack>
+        <Stack.Screen name="(tabs)"/>
+      </Stack>
     </SafeAreaProvider>
   );
 }
