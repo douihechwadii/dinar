@@ -78,8 +78,8 @@ function Tab({ route, isFocused, onPress, options }: TabProps) {
 
     return (
         <TouchableOpacity onPress={onPress} style={styles.tab}>
-            <Octicons name={iconName as any} size={24} color={isFocused ? '#007aff' : '#888'}/>
-            <Text style={{ color: isFocused ? '#007aff' : '#888', fontSize: 12 }}>
+            <Octicons name={iconName as any} size={24} color={isFocused ? '#00BFA6' : '#888'}/>
+            <Text style={{ color: isFocused ? '#00BFA6' : '#888', fontSize: 12 }}>
                 {options.title || route.name}
             </Text>
         </TouchableOpacity>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     addButton: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#007aff',
+        backgroundColor: '#00BFA6',
         marginHorizontal: 8,
         borderRadius: 8,
         paddingVertical: 12,
