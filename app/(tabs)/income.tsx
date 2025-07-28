@@ -9,7 +9,7 @@ export default function IncomeScreen() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>This is the Income Screen</Text>
     </View>
   );
 }

@@ -9,7 +9,7 @@ export default function ExpenseScreen() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>This is the Expense Screen</Text>
     </View>
   );
 }

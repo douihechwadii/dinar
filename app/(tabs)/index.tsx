@@ -9,7 +9,7 @@ export default function HomeScreen() {
         alignItems: "center",
       }}
     >
-      <Text>Why did you redeam it !!!!!</Text>
+      <Text>This is the Home Screen</Text>
     </View>
   );
 }
