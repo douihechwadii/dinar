@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-export default function BudgetScreen() {
+export default function SavingScreen() {
   return (
     <View
       style={{
