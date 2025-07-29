@@ -5,7 +5,7 @@ import { View } from "react-native";
 export default function TabLayout() {
     return (
         <View style={{ flex: 1, backgroundColor: '#f8f8f8'}}>
-            <Tabs screenOptions={{}}>
+            <Tabs screenOptions={{headerTitleAlign: 'center'}}>
                 <Tabs.Screen name="index" options={{ 
                     title: 'Home',
                     tabBarIcon: ({ color, size, focused }) => (
