@@ -62,7 +62,7 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
 
       {/* Center Add Button */}
       <TouchableOpacity
-        onPress={() => router.push('/modals/add')}
+        onPress={() => router.push('/modals/TabBarModal')}
         style={styles.addButton}
       >
         <Ionicons name="add-circle-outline" size={24} color="#fff" />
