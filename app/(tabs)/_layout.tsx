@@ -1,55 +1,22 @@
-import Ionicons from '@expo/vector-icons/Ionicons';
+import CustomTabBar from '@/components/CustomTabBar';
 import { Tabs } from "expo-router";
 import { View } from "react-native";
 
 export default function TabLayout() {
     return (
         <View style={{ flex: 1, backgroundColor: '#f8f8f8'}}>
-            <Tabs screenOptions={{headerTitleAlign: 'center'}}>
-                <Tabs.Screen name="index" options={{ 
-                    title: 'Home',
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Ionicons
-                            name={focused ? 'home' : 'home-outline'}
-                            size={size}
-                            color={color}
-                        />
-                    )
-                    }}
-                />
-                <Tabs.Screen name="income" options={{ 
-                    title: 'Income',
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Ionicons
-                            name={focused ? 'arrow-down-circle' : 'arrow-down'}
-                            size={size}
-                            color={color}
-                        />
-                    )
-                    }}
-                />
-                <Tabs.Screen name="expense" options={{ 
-                    title: 'Expense',
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Ionicons
-                            name={focused ? 'arrow-up-circle' : 'arrow-up'}
-                            size={size}
-                            color={color}
-                        />
-                    )
-                    }}
-                />
-                <Tabs.Screen name="saving" options={{ 
-                    title: 'Saving',
-                    tabBarIcon: ({ color, size, focused }) => (
-                        <Ionicons
-                            name={focused ? 'card' : 'card-outline'}
-                            size={size}
-                            color={color}
-                        />
-                    )
-                    }}
-                />
+            <Tabs 
+                screenOptions={{headerTitleAlign: 'center'}}
+                tabBar={(props) => (
+                    <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
+                        <CustomTabBar {...props} />
+                    </View>
+                )}
+                >
+                <Tabs.Screen name="index" options={{ title: 'Home' }}/>
+                <Tabs.Screen name="income" options={{ title: 'Income' }}/>
+                <Tabs.Screen name="expense" options={{ title: 'Expense' }}/>
+                <Tabs.Screen name="saving" options={{ title: 'Saving' }}/>
             </Tabs>
         </View>
     );
