@@ -1,4 +1,4 @@
-import { Octicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import type { Route } from '@react-navigation/native';
@@ -40,31 +40,32 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
             onPress={() => navigation.navigate(route.name)}
             options={options}
           />
-        );function Tab({ route, isFocused, onPress, options }: TabProps) {
-  const iconName = {
-    index: 'home',
-    income: 'arrow-down',
-    expense: 'arrow-up',
-    saving: 'credit-card',
-  }[route.name as string];
+        );
+        function Tab({ route, isFocused, onPress, options }: TabProps) {
+            const iconName = {
+                index: 'home',
+                income: 'arrow-down-outline',
+                expense: 'arrow-up-outline',
+                saving: 'wallet',
+            }[route.name as string];
 
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.tab}>
-      <Octicons name={iconName as any} size={24} color={isFocused ? '#007aff' : '#888'} />
-      <Text style={{ color: isFocused ? '#007aff' : '#888', fontSize: 12 }}>
-        {options.title || route.name}
-      </Text>
-    </TouchableOpacity>
-  );
-}
-      })}
+            return (
+                <TouchableOpacity onPress={onPress} style={styles.tab}>
+                <Ionicons name={iconName as any} size={24} color={isFocused ? '#007aff' : '#888'} />
+                <Text style={{ color: isFocused ? '#007aff' : '#888', fontSize: 12 }}>
+                    {options.title || route.name}
+                </Text>
+                </TouchableOpacity>
+            );
+        }
+    })}
 
       {/* Center Add Button */}
       <TouchableOpacity
         onPress={() => router.push('/modals/add')}
         style={styles.addButton}
       >
-        <Octicons name="plus-circle" size={24} color="#fff" />
+        <Ionicons name="add-circle-outline" size={24} color="#fff" />
       </TouchableOpacity>
 
       {/* Right side tabs: Expense and Settings */}
@@ -90,14 +91,14 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
 function Tab({ route, isFocused, onPress, options }: TabProps) {
   const iconName = {
     index: 'home',
-    income: 'arrow-down',
-    expense: 'arrow-up',
-    saving: 'credit-card',
+    income: 'arrow-down-outline',
+    expense: 'arrow-up-outline',
+    saving: 'wallet',
   }[route.name as string];
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.tab}>
-      <Octicons name={iconName as any} size={24} color={isFocused ? '#007aff' : '#888'} />
+      <Ionicons name={iconName as any} size={24} color={isFocused ? '#007aff' : '#888'} />
       <Text style={{ color: isFocused ? '#007aff' : '#888', fontSize: 12 }}>
         {options.title || route.name}
       </Text>
@@ -134,8 +135,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#007aff',
-    marginHorizontal: 8,
     borderRadius: 24,
     paddingVertical: 12,
+    marginHorizontal: 12,
   },
 });

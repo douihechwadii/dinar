@@ -1,15 +1,15 @@
-import { Octicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View } from 'react-native';
 
 export default function CustomHeader() {
     return (
         <View style={styles.container}>
             <View style={[ styles.balance, { borderColor: 'red' } ]}>
-                <Octicons name='arrow-up' size={24} style={{ paddingRight: 12 }}/>
+                <Ionicons name='arrow-up-outline' size={24} style={{ paddingRight: 12 }}/>
                 <Text style={styles.title}>1000 $</Text>
             </View>
             <View style={[ styles.balance, { borderColor: 'green' } ]}>
-                <Octicons name='arrow-down' size={24} style={{ paddingRight: 12 }}/>
+                <Ionicons name='arrow-down-outline' size={24} style={{ paddingRight: 12 }}/>
                 <Text style={styles.title}>2000 $</Text>
             </View>
         </View>
