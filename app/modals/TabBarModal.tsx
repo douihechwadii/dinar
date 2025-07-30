@@ -66,7 +66,7 @@ const AddModal = ({ visible, onClose }: AddModalProps) => {
 export default AddModal;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, paddingTop: 40, backgroundColor: 'white' },
+  container: { flex: 1, paddingTop: 20, backgroundColor: 'white' },
   tabs: { flexDirection: 'row', justifyContent: 'space-around', paddingVertical: 10 },
   tabButton: { paddingVertical: 8, paddingHorizontal: 16, borderBottomWidth: 2, borderBottomColor: 'transparent' },
   activeTab: { borderBottomColor: '#007aff' },
