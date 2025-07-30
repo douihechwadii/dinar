@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   flexDirection: 'row',
   height: 60,
   backgroundColor: '#fff',
-  borderRadius: 8,
+  borderRadius: 24,
   marginHorizontal: 16, // Adds space on the left and right
   marginBottom: 16,     // Adds space from bottom
   paddingHorizontal: 8,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#007aff',
     marginHorizontal: 8,
-    borderRadius: 8,
+    borderRadius: 24,
     paddingVertical: 12,
   },
 });

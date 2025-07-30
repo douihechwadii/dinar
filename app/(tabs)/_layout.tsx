@@ -6,7 +6,7 @@ export default function TabLayout() {
     return (
         <View style={{ flex: 1, backgroundColor: '#f8f8f8'}}>
             <Tabs 
-                screenOptions={{headerTitleAlign: 'center'}}
+                screenOptions={{ headerShown: false}}
                 tabBar={(props) => (
                     <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0 }}>
                         <CustomTabBar {...props} />

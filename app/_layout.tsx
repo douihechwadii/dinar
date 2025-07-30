@@ -1,3 +1,4 @@
+import CustomHeader from "@/components/CustomHeader";
 import { Stack } from "expo-router";
 import { StatusBar } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -7,7 +8,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <StatusBar barStyle="dark-content"/>
       <Stack screenOptions={{
-        headerShown: false
+        header: () => <CustomHeader/>
       }}>
         <Stack.Screen name="(tabs)"/>
       </Stack>
