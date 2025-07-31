@@ -18,13 +18,14 @@ const AddModal = ({ visible, onClose }: AddModalProps) => {
   const [activeTab, setActiveTab] = useState<'expense' | 'income' | 'saving'>('expense');
 
   const renderContent = () => {
+    const props = {onRegister: onClose}
     switch (activeTab) {
       case 'expense':
-        return <AddExpense />;
+        return <AddExpense {...props}/>;
       case 'income':
-        return <AddIncome />;
+        return <AddIncome {...props}/>;
       case 'saving':
-        return <AddSaving />;
+        return <AddSaving {...props}/>;
     }
   };
 
