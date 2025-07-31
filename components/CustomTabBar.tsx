@@ -4,7 +4,7 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import type { Route } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 type TabProps = {
     route: Route<string>;
@@ -52,9 +52,6 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
             return (
                 <TouchableOpacity onPress={onPress} style={styles.tab}>
                 <Ionicons name={iconName as any} size={24} color={isFocused ? '#007aff' : '#888'} />
-                <Text style={{ color: isFocused ? '#007aff' : '#888', fontSize: 12 }}>
-                    {options.title || route.name}
-                </Text>
                 </TouchableOpacity>
             );
         }
@@ -99,9 +96,6 @@ function Tab({ route, isFocused, onPress, options }: TabProps) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.tab}>
       <Ionicons name={iconName as any} size={24} color={isFocused ? '#007aff' : '#888'} />
-      <Text style={{ color: isFocused ? '#007aff' : '#888', fontSize: 12 }}>
-        {options.title || route.name}
-      </Text>
     </TouchableOpacity>
   );
 }
@@ -128,7 +122,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
   },
   addButton: {
     flex: 1,
