@@ -6,7 +6,7 @@ type Props = {
   onRegister: () => void;
 };
 
-const AddExpense = ({ onRegister }: Props) => {
+const AddExpense = ({ onRegister}: Props) => {
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);

@@ -8,7 +8,7 @@ import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 type AddModalProps = {
   visible: boolean;
-  onClose: () => void;
+  onClose: () => {};
 };
 
 const router = useRouter();
