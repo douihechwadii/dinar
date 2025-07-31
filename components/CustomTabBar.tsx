@@ -19,7 +19,7 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
         (r) => !r.name.startsWith('_') && !r.name.startsWith('modals/')
     );
 
-    const tabOrder = ['index', 'income', 'expense', 'saving'];
+    const tabOrder = ['index', 'income', 'expense', 'profile'];
     const orderedTabs = tabOrder.map(name => 
         tabRoutes.find(route => route.name === name)
     ).filter((route): route is Route<string> => route !== undefined);
@@ -46,7 +46,7 @@ export default function CustomTabBar({ state, descriptors, navigation }: BottomT
                 index: 'home',
                 income: 'arrow-down-outline',
                 expense: 'arrow-up-outline',
-                saving: 'wallet',
+                profile: 'person',
             }[route.name as string];
 
             return (
@@ -93,7 +93,7 @@ function Tab({ route, isFocused, onPress, options }: TabProps) {
     index: 'home',
     income: 'arrow-down-outline',
     expense: 'arrow-up-outline',
-    saving: 'wallet',
+    profile: 'person',
   }[route.name as string];
 
   return (

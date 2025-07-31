@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 
-export default function SavingScreen() {
+export default function ProfileScreen() {
   return (
     <View
       style={{
@@ -9,7 +9,7 @@ export default function SavingScreen() {
         alignItems: "center",
       }}
     >
-      <Text>This is the Saving Screen</Text>
+      <Text>This is the Profile Screen</Text>
     </View>
   );
 }

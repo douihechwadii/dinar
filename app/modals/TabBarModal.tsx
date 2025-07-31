@@ -1,7 +1,6 @@
 // /modals/add.tsx
 import AddExpense from '@/components/modals/AddExpense';
 import AddIncome from '@/components/modals/AddIncome';
-import AddSaving from '@/components/modals/AddSaving';
 
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
@@ -15,7 +14,7 @@ type AddModalProps = {
 const router = useRouter();
 
 const AddModal = ({ visible, onClose }: AddModalProps) => {
-  const [activeTab, setActiveTab] = useState<'expense' | 'income' | 'saving'>('expense');
+  const [activeTab, setActiveTab] = useState<'expense' | 'income' >('expense');
 
   const renderContent = () => {
     const props = {onRegister: onClose}
@@ -24,8 +23,6 @@ const AddModal = ({ visible, onClose }: AddModalProps) => {
         return <AddExpense {...props}/>;
       case 'income':
         return <AddIncome {...props}/>;
-      case 'saving':
-        return <AddSaving {...props}/>;
     }
   };
 
@@ -34,7 +31,7 @@ const AddModal = ({ visible, onClose }: AddModalProps) => {
       <View style={styles.container}>
         {/* Tabs */}
         <View style={styles.tabs}>
-          {['expense', 'income', 'saving'].map((tab) => (
+          {['expense', 'income'].map((tab) => (
             <TouchableOpacity
               key={tab}
               style={[
