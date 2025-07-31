@@ -13,10 +13,10 @@ export default function TabLayout() {
                     </View>
                 )}
                 >
-                <Tabs.Screen name="index"/>
-                <Tabs.Screen name="income"/>
-                <Tabs.Screen name="expense"/>
-                <Tabs.Screen name="profile"/>
+                <Tabs.Screen name="index" options={{ title: 'Home' }}/>
+                <Tabs.Screen name="income" options={{ title: 'Income' }}/>
+                <Tabs.Screen name="expense" options={{ title: 'Expense' }}/>
+                <Tabs.Screen name="profile" options={{ title: 'Profile' }}/>
             </Tabs>
         </View>
     );
