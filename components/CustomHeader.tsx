@@ -69,10 +69,13 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 16,
     margin: 8,
-    paddingHorizontal: 24,
+    paddingHorizontal: 12,
     borderWidth: 4,
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: "row",
+    flex: 1,
+    maxWidth: 180,
+
   }
 });
