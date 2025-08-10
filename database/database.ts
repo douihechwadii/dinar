@@ -13,7 +13,6 @@ export const initializeDatabase = () => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL UNIQUE,
         type TEXT NOT NULL CHECK (type IN ('income', 'expense')),
-        color TEXT DEFAULT '#6B7280',
         icon TEXT DEFAULT 'folder',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
       );
@@ -47,40 +46,40 @@ export const initializeDatabase = () => {
 
 const insertDefaultCategories = () => {
   const defaultCategories = [
-    { name: 'Salary', type: 'income', color: '#10B981', icon: 'briefcase' },
-    { name: 'Freelance', type: 'income', color: '#059669', icon: 'laptop' },
-    { name: 'Investment', type: 'income', color: '#047857', icon: 'trending-up' },
-    { name: 'Other Income', type: 'income', color: '#065F46', icon: 'plus-circle' },
+    { name: 'Salary', type: 'income', icon: 'briefcase' },
+    { name: 'Freelance', type: 'income', icon: 'laptop' },
+    { name: 'Investment', type: 'income', icon: 'trending-up' },
+    { name: 'Other Income', type: 'income', icon: 'plus-circle' },
     
-    { name: 'Food & Dining', type: 'expense', color: '#EF4444', icon: 'utensils' },
-    { name: 'Transportation', type: 'expense', color: '#F59E0B', icon: 'car' },
-    { name: 'Shopping', type: 'expense', color: '#8B5CF6', icon: 'shopping-bag' },
-    { name: 'Entertainment', type: 'expense', color: '#EC4899', icon: 'music' },
-    { name: 'Bills & Utilities', type: 'expense', color: '#6B7280', icon: 'receipt' },
-    { name: 'Healthcare', type: 'expense', color: '#DC2626', icon: 'heart' },
-    { name: 'Education', type: 'expense', color: '#2563EB', icon: 'book-open' },
-    { name: 'Other Expenses', type: 'expense', color: '#7C2D12', icon: 'more-horizontal' }
+    { name: 'Food & Dining', type: 'expense', icon: 'utensils' },
+    { name: 'Transportation', type: 'expense', icon: 'car' },
+    { name: 'Shopping', type: 'expense', icon: 'shopping-bag' },
+    { name: 'Entertainment', type: 'expense', icon: 'music' },
+    { name: 'Bills & Utilities', type: 'expense', icon: 'receipt' },
+    { name: 'Healthcare', type: 'expense', icon: 'heart' },
+    { name: 'Education', type: 'expense', icon: 'book-open' },
+    { name: 'Other Expenses', type: 'expense', icon: 'more-horizontal' }
   ];
 
   defaultCategories.forEach(category => {
     try {
       const statement = db.prepareSync(`
-        INSERT OR IGNORE INTO categories (name, type, color, icon) 
-        VALUES (?, ?, ?, ?)
+        INSERT OR IGNORE INTO categories (name, type, icon) 
+        VALUES (?, ?, ?)
       `);
-      statement.executeSync([category.name, category.type, category.color, category.icon]);
+      statement.executeSync([category.name, category.type, category.icon]);
     } catch (error) {
     }
   });
 };
 
 export const dbOperations = {
-  createCategory: (name: string, type: TransactionType, color?: string, icon?: string) => {
+  createCategory: (name: string, type: TransactionType, icon?: string) => {
     const statement = db.prepareSync(`
-      INSERT INTO categories (name, type, color, icon) 
-      VALUES (?, ?, ?, ?)
+      INSERT INTO categories (name, type, icon) 
+      VALUES (?, ?, ?)
     `);
-    return statement.executeSync([name, type, color || '#6B7280', icon || 'folder']);
+    return statement.executeSync([name, type, icon || 'folder']);
   },
 
   getCategories: (type?: TransactionType) => {
@@ -96,13 +95,13 @@ export const dbOperations = {
     return statement.executeSync([id]).getFirstSync();
   },
 
-  updateCategory: (id: number, name: string, color?: string, icon?: string) => {
+  updateCategory: (id: number, name: string,  icon?: string) => {
     const statement = db.prepareSync(`
       UPDATE categories 
-      SET name = ?, color = COALESCE(?, color), icon = COALESCE(?, icon)
+      SET name = ?, icon = COALESCE(?, icon)
       WHERE id = ?
     `);
-    return statement.executeSync([name, color || null, icon || null, id]);
+    return statement.executeSync([name, icon || null, id]);
   },
 
   deleteCategory: (id: number) => {
@@ -121,7 +120,7 @@ export const dbOperations = {
 
   getTransactions: (limit?: number, offset?: number) => {
     const query = `
-      SELECT t.*, c.name as category_name, c.color as category_color, c.icon as category_icon
+      SELECT t.*, c.name as category_name, c.icon as category_icon
       FROM transactions t
       LEFT JOIN categories c ON t.category_id = c.id
       ORDER BY t.date DESC, t.created_at DESC
@@ -133,7 +132,7 @@ export const dbOperations = {
 
   getTransactionById: (id: number) => {
     const statement = db.prepareSync(`
-      SELECT t.*, c.name as category_name, c.color as category_color, c.icon as category_icon
+      SELECT t.*, c.name as category_name, c.icon as category_icon
       FROM transactions t
       LEFT JOIN categories c ON t.category_id = c.id
       WHERE t.id = ?
@@ -143,7 +142,7 @@ export const dbOperations = {
 
   getTransactionsByDateRange: (startDate: string, endDate: string) => {
     const statement = db.prepareSync(`
-      SELECT t.*, c.name as category_name, c.color as category_color, c.icon as category_icon
+      SELECT t.*, c.name as category_name, c.icon as category_icon
       FROM transactions t
       LEFT JOIN categories c ON t.category_id = c.id
       WHERE t.date BETWEEN ? AND ?
@@ -154,7 +153,7 @@ export const dbOperations = {
 
   getTransactionsByCategory: (categoryId: number, startDate?: string, endDate?: string) => {
     let query = `
-      SELECT t.*, c.name as category_name, c.color as category_color, c.icon as category_icon
+      SELECT t.*, c.name as category_name, c.icon as category_icon
       FROM transactions t
       LEFT JOIN categories c ON t.category_id = c.id
       WHERE t.category_id = ?
@@ -223,7 +222,6 @@ export const dbOperations = {
       SELECT 
         c.id,
         c.name,
-        c.color,
         c.icon,
         c.type,
         COALESCE(SUM(t.amount), 0) as total_amount,
@@ -240,7 +238,42 @@ export const dbOperations = {
       params.push(type);
     }
     
-    query += ' GROUP BY c.id, c.name, c.color, c.icon, c.type ORDER BY total_amount DESC';
+    query += ' GROUP BY c.id, c.name, c.icon, c.type ORDER BY total_amount DESC';
+    
+    const statement = db.prepareSync(query);
+    return statement.executeSync(params).getAllSync();
+  },
+
+  getCategoriesWithValues: (type: TransactionType, startDate?: string, endDate?: string) => {
+    let query = `
+      SELECT 
+        c.id,
+        c.name,
+        c.icon,
+        c.type,
+        COALESCE(SUM(t.amount), 0) as total_amount,
+        COUNT(t.id) as transaction_count,
+        AVG(t.amount) as average_amount,
+        MAX(t.amount) as max_amount,
+        MIN(t.amount) as min_amount
+      FROM categories c
+      LEFT JOIN transactions t ON c.id = t.category_id AND t.type = c.type
+    `;
+    
+    const params: (string | number)[] = [];
+    
+    // Add date range filter if provided
+    if (startDate && endDate) {
+      query += ' AND t.date BETWEEN ? AND ?';
+      params.push(startDate, endDate);
+    }
+    
+    // Filter by transaction type
+    query += ` WHERE c.type = ?`;
+    params.push(type);
+    
+    query += ` GROUP BY c.id, c.name, c.icon, c.type 
+               ORDER BY total_amount DESC, c.name ASC`;
     
     const statement = db.prepareSync(query);
     return statement.executeSync(params).getAllSync();
@@ -263,7 +296,7 @@ export const dbOperations = {
 
   getDailyTransactions: (date: string) => {
     const statement = db.prepareSync(`
-      SELECT t.*, c.name as category_name, c.color as category_color, c.icon as category_icon
+      SELECT t.*, c.name as category_name, c.icon as category_icon
       FROM transactions t
       LEFT JOIN categories c ON t.category_id = c.id
       WHERE t.date = ?
@@ -274,7 +307,7 @@ export const dbOperations = {
 
   searchTransactions: (searchTerm: string, startDate?: string, endDate?: string) => {
     let query = `
-      SELECT t.*, c.name as category_name, c.color as category_color, c.icon as category_icon
+      SELECT t.*, c.name as category_name, c.icon as category_icon
       FROM transactions t
       LEFT JOIN categories c ON t.category_id = c.id
       WHERE (t.description LIKE ? OR c.name LIKE ?)
