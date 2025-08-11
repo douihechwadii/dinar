@@ -1,3 +1,4 @@
+import { dbOperations } from "@/database/database";
 import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 type BalanceData = {
@@ -29,6 +30,9 @@ export const BalanceProvider: React.FC<BalanceProviderProps> = ({ children }) =>
     const loadBalanceData = async () => {
         try {
             setLoading(true);
+
+            const result = dbOperations.getTotalBalance() as BalanceData;
+
             setBalanceData({
                 total_income: result.total_income || 0,
                 total_expense: result.total_expense || 0,
